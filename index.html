@@ -4,512 +4,380 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08665b">
+<meta name="theme-color" content="#075e54">
 <title>Baggira Mobile</title>
-
 <style>
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #eef2f8;
-  color: #202c50;
-}
-
-header {
-  background: #08665b;
-  color: white;
-  text-align: center;
-  padding: 28px 12px;
-}
-
-header h1 { margin: 0 0 8px; font-size: 30px; }
-header p { margin: 0; font-size: 16px; }
-
-main {
-  max-width: 650px;
-  margin: auto;
-  padding: 18px;
-}
-
-.card {
-  background: white;
-  border-radius: 20px;
-  padding: 22px;
-  margin-bottom: 18px;
-  box-shadow: 0 4px 16px #00000008;
-}
-
-.center { text-align: center; }
-
-input, textarea {
-  width: 100%;
-  padding: 15px;
-  margin: 8px 0;
-  border: 1px solid #d4d9e0;
-  border-radius: 12px;
-  font-size: 17px;
-  background: white;
-  color: #202c50;
-}
-
-textarea { min-height: 85px; resize: vertical; }
-
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: 12px;
-  padding: 16px 12px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.primary, .nav-button {
-  background: #087f70;
-  color: white;
-}
-
-.primary { width: 100%; margin-top: 8px; }
-
-.secondary {
-  background: #e7f3f0;
-  color: #08665b;
-  width: 100%;
-  margin-top: 8px;
-}
-
-.danger { background: #a52b37; color: white; }
-
-.nav {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.nav-button { min-height: 68px; }
-
-.balance {
-  font-size: 36px;
-  font-weight: bold;
-  margin: 18px 0;
-  overflow-wrap: anywhere;
-}
-
-.muted { color: #667085; }
-
-h2 { font-size: 25px; }
-h3 { margin-top: 0; }
-
-.notice {
-  background: #fff6df;
-  color: #72521a;
-  border-radius: 10px;
-  padding: 12px;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.entry {
-  border-bottom: 1px solid #e6e9ef;
-  padding: 12px 0;
-  overflow-wrap: anywhere;
-}
-
-.entry:last-child { border-bottom: none; }
-
-.hidden { display: none !important; }
-
-footer {
-  text-align: center;
-  color: #667085;
-  font-size: 13px;
-  padding: 15px;
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f1f5f5;color:#172b2a}
+header{background:#075e54;color:white;padding:22px 16px;text-align:center}
+header h1{margin:0;font-size:27px}
+header p{margin:7px 0 0;font-size:13px}
+main{max-width:520px;margin:auto;padding:16px}
+.card{background:white;border-radius:16px;padding:18px;margin-bottom:15px;box-shadow:0 3px 12px #0000000c}
+h2{font-size:20px;margin:0 0 15px}
+h3{font-size:16px;margin:0 0 12px}
+input,textarea,select{width:100%;padding:13px;margin:7px 0 12px;border:1px solid #ccd8d6;border-radius:9px;font-size:16px}
+button{border:0;border-radius:10px;padding:13px;font-size:15px;font-weight:bold;cursor:pointer}
+.primary{background:#087e70;color:white;width:100%}
+.secondary{background:#e5f3f0;color:#075e54;width:100%}
+.danger{background:#fff0ee;color:#b42318}
+.balance{background:linear-gradient(135deg,#075e54,#119b83);color:white}
+.balance small{opacity:.9}
+.amount{font-size:29px;font-weight:bold;margin:10px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.menu{background:white;border:1px solid #dce8e5;color:#075e54;min-height:85px}
+.menu span{display:block;font-size:25px;margin-bottom:8px}
+.hidden{display:none!important}
+.notice{background:#fff6d9;padding:11px;border-radius:9px;font-size:12px;margin-top:12px}
+.item{border-bottom:1px solid #edf0ef;padding:13px 0}
+.item:last-child{border-bottom:0}
+.item strong{display:block;margin-bottom:5px}
+.muted{color:#687977;font-size:13px}
+.green{color:#087e70}
+.red{color:#c0392b}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.back{margin-bottom:14px}
+footer{text-align:center;color:#72817f;font-size:12px;padding:20px}
 </style>
 </head>
-
 <body>
 
 <header>
-  <h1>Baggira Mobile</h1>
+  <h1>🟢 Baggira Mobile</h1>
   <p>Messagerie et services monétaires</p>
 </header>
 
 <main>
-
-  <!-- CONNEXION -->
-  <section id="loginScreen" class="card center">
+  <section id="login" class="card">
     <h2>Bienvenue !</h2>
-    <p>Connecte-toi à Baggira Mobile</p>
-
+    <p>Connecte-toi pour accéder à ton espace.</p>
     <form id="loginForm">
-      <label for="pin">Ton code PIN à 4 chiffres</label>
-      <input
-        id="pin"
-        type="password"
-        inputmode="numeric"
-        pattern="[0-9]{4}"
-        maxlength="4"
-        placeholder="Entrer le PIN"
-        autocomplete="off"
-        required
-      >
-
-      <button type="button" id="showPin" class="secondary">
-        Afficher le PIN
-      </button>
-
-      <button type="submit" class="primary">
-        Se connecter
-      </button>
+      <label for="pin">Code PIN à 4 chiffres</label>
+      <input id="pin" type="password" inputmode="numeric"
+        maxlength="4" pattern="[0-9]{4}" placeholder="Entrer le PIN"
+        autocomplete="off" required>
+      <button type="button" id="showPin" class="secondary">Afficher le PIN</button>
+      <br><br>
+      <button class="primary" type="submit">Se connecter</button>
     </form>
-
-    <p id="loginError" role="alert" style="color:#b42318"></p>
-
-    <div class="notice">
-      PIN de démonstration : <strong>1234</strong>.<br>
-      Ceci est un prototype, pas un système bancaire sécurisé.
-    </div>
+    <p class="muted">PIN de démonstration : 1234</p>
   </section>
 
-  <!-- APPLICATION -->
-  <section id="appScreen" class="hidden">
-
-    <div class="card center">
-      <p>Mon portefeuille de démonstration</p>
-      <div class="balance"><span id="balance">250 000</span> CDF</div>
-      <p class="muted">Solde fictif pour les essais</p>
-      <button id="logout" class="danger">Se déconnecter</button>
+  <section id="home" class="hidden">
+    <div class="card balance">
+      <small>Mon solde fictif</small>
+      <div class="amount" id="homeBalance">250 000 CDF</div>
+      <small>Bienvenue sur Baggira Mobile</small>
     </div>
 
-    <nav class="nav" aria-label="Navigation principale">
-      <button class="nav-button" data-page="send">Envoyer</button>
-      <button class="nav-button" data-page="receive">Recevoir</button>
-      <button class="nav-button" data-page="messages">Messages</button>
-      <button class="nav-button" data-page="wallet">Portefeuille</button>
-    </nav>
-
-    <!-- ENVOYER -->
-    <section id="send" class="card page">
-      <h2>Envoyer de l'argent</h2>
-
-      <form id="sendForm">
-        <label for="recipient">Nom du destinataire</label>
-        <input id="recipient" placeholder="Nom du destinataire" required>
-
-        <label for="sendAmount">Montant en CDF</label>
-        <input id="sendAmount" type="number"
-          min="1" step="1" inputmode="numeric"
-          placeholder="Montant en CDF" required>
-
-        <button class="primary" type="submit">Confirmer l'envoi</button>
-      </form>
-      <p id="sendResult" role="status"></p>
-    </section>
-
-    <!-- RECEVOIR -->
-    <section id="receive" class="card page hidden">
-      <h2>Recevoir de l'argent</h2>
-      <p>Simule la réception d'un montant dans ton portefeuille.</p>
-
-      <form id="receiveForm">
-        <label for="sender">Nom de l'expéditeur</label>
-        <input id="sender" placeholder="Nom de l'expéditeur" required>
-
-        <label for="receiveAmount">Montant en CDF</label>
-        <input id="receiveAmount" type="number"
-          min="1" step="1" inputmode="numeric"
-          placeholder="Montant en CDF" required>
-
-        <button class="primary" type="submit">Confirmer la réception</button>
-      </form>
-      <p id="receiveResult" role="status"></p>
-    </section>
-
-    <!-- MESSAGES -->
-    <section id="messages" class="card page hidden">
-      <h2>Messagerie</h2>
-
-      <div id="messageList" aria-live="polite">
-        <p class="muted">Aucun message pour le moment.</p>
+    <div class="card">
+      <h2>Mes services</h2>
+      <div class="grid">
+        <button class="menu" data-page="send"><span>📤</span>Envoyer</button>
+        <button class="menu" data-page="receive"><span>📥</span>Recevoir</button>
+        <button class="menu" data-page="messages"><span>💬</span>Messages</button>
+        <button class="menu" data-page="wallet"><span>👛</span>Portefeuille</button>
       </div>
-
-      <form id="messageForm">
-        <label for="contact">Nom du contact</label>
-        <input id="contact" placeholder="Nom du contact" required>
-
-        <label for="messageText">Ton message</label>
-        <textarea id="messageText"
-          placeholder="Écris ton message ici..." required></textarea>
-
-        <button class="primary" type="submit">Envoyer le message</button>
-      </form>
-      <p class="muted">
-        Les messages sont enregistrés uniquement dans cette démonstration.
-      </p>
-    </section>
-
-    <!-- PORTEFEUILLE -->
-    <section id="wallet" class="card page hidden">
-      <h2>Mon portefeuille</h2>
-      <p>Solde disponible :</p>
-      <h2><span id="walletBalance">250 000</span> CDF</h2>
-
-      <h3>Historique des opérations</h3>
-      <div id="history">
-        <p class="muted">Aucune opération pour le moment.</p>
-      </div>
-
-      <button id="backHome" class="secondary">Retour à l'envoi</button>
-    </section>
-
-    <div class="notice">
-      Attention : toutes les opérations sont fictives.
-      Aucun transfert réel n'est effectué.
     </div>
+
+    <div class="card">
+      <div class="row">
+        <h3>Dernières opérations</h3>
+        <button class="secondary" data-page="history">Tout voir</button>
+      </div>
+      <div id="recentTransactions"></div>
+    </div>
+
+    <button id="logout" class="danger" style="width:100%">🚪 Se déconnecter</button>
+    <div class="notice">Application de démonstration : aucun véritable transfert d'argent n'est effectué.</div>
   </section>
+
+  <section id="send" class="page hidden card">
+    <button class="secondary back" data-page="home">← Retour</button>
+    <h2>📤 Envoyer de l'argent</h2>
+    <p>Solde : <strong id="sendBalance"></strong></p>
+    <form id="sendForm">
+      <label>Nom du destinataire</label>
+      <input id="recipient" placeholder="Ex. Jean" required>
+      <label>Numéro de téléphone</label>
+      <input id="recipientPhone" type="tel" placeholder="Numéro du destinataire" required>
+      <label>Montant (CDF)</label>
+      <input id="sendAmount" type="number" min="1" step="1" placeholder="Ex. 5000" required>
+      <button class="primary">Confirmer l'envoi simulé</button>
+    </form>
+  </section>
+
+  <section id="receive" class="page hidden card">
+    <button class="secondary back" data-page="home">← Retour</button>
+    <h2>📥 Recevoir de l'argent</h2>
+    <p>Cette simulation ajoute le montant à ton solde.</p>
+    <form id="receiveForm">
+      <label>Nom de l'expéditeur</label>
+      <input id="sender" placeholder="Nom de l'expéditeur" required>
+      <label>Montant (CDF)</label>
+      <input id="receiveAmount" type="number" min="1" step="1" placeholder="Ex. 10000" required>
+      <button class="primary">Simuler la réception</button>
+    </form>
+  </section>
+
+  <section id="wallet" class="page hidden card">
+    <button class="secondary back" data-page="home">← Retour</button>
+    <h2>👛 Mon portefeuille</h2>
+    <p class="muted">Solde disponible (fictif)</p>
+    <div id="walletBalance" class="amount green">250 000 CDF</div>
+    <button class="primary" data-page="history">📋 Voir l'historique</button>
+  </section>
+
+  <section id="history" class="page hidden card">
+    <button class="secondary back" data-page="home">← Retour</button>
+    <h2>📋 Historique des transactions</h2>
+    <p class="muted">Les opérations enregistrées sur cet appareil.</p>
+    <div id="allTransactions"></div>
+    <button id="clearHistory" class="danger" style="width:100%;margin-top:15px">Effacer l'historique</button>
+  </section>
+
+  <section id="messages" class="page hidden card">
+    <button class="secondary back" data-page="home">← Retour</button>
+    <h2>💬 Mes messages</h2>
+    <div id="messageList"></div>
+    <form id="messageForm">
+      <label>Écrire un message</label>
+      <textarea id="messageText" rows="3" placeholder="Ton message..." required></textarea>
+      <button class="primary">Ajouter le message</button>
+    </form>
+    <p class="muted">Les messages sont enregistrés localement sur cet appareil. Ils ne sont pas envoyés à d'autres personnes.</p>
+  </section>
+
+  <div id="feedback" role="status" aria-live="polite"></div>
 </main>
 
-<footer>
-  Baggira Mobile © 2026 — Prototype de démonstration
-</footer>
+<footer>Baggira Mobile © 2026 — Prototype de démonstration</footer>
 
 <script>
-(function () {
-  "use strict";
-
-  const DEMO_PIN = "1234";
-  const INITIAL_BALANCE = 250000;
-
-  let balance = INITIAL_BALANCE;
-  let history = [];
-  let messages = [];
-
+(function(){
   const $ = id => document.getElementById(id);
+  const KEY = "baggira_demo_v2";
+  let data;
 
-  const loginScreen = $("loginScreen");
-  const appScreen = $("appScreen");
-
-  function formatMoney(amount) {
-    return Math.round(amount).toLocaleString("fr-FR");
+  function initialData(){
+    return {
+      balance:250000,
+      transactions:[],
+      messages:[]
+    };
   }
 
-  function showPage(pageId) {
-    document.querySelectorAll(".page").forEach(page => {
-      page.classList.toggle("hidden", page.id !== pageId);
-    });
+  function loadData(){
+    try{
+      const saved=localStorage.getItem(KEY);
+      if(saved){
+        const d=JSON.parse(saved);
+        if(typeof d.balance==="number" &&
+           Array.isArray(d.transactions) &&
+           Array.isArray(d.messages)) return d;
+      }
+    }catch(e){}
+    return initialData();
   }
 
-  function updateBalance() {
-    $("balance").textContent = formatMoney(balance);
-    $("walletBalance").textContent = formatMoney(balance);
+  data=loadData();
+
+  function save(){
+    try{
+      localStorage.setItem(KEY,JSON.stringify(data));
+      return true;
+    }catch(e){
+      alert("Attention : le navigateur ne permet pas d'enregistrer les données.");
+      return false;
+    }
   }
 
-  function addHistory(type, name, amount) {
-    history.unshift({
-      type,
-      name,
-      amount,
-      date: new Date().toLocaleString("fr-FR")
-    });
-    renderHistory();
+  function money(n){
+    return Math.round(n).toLocaleString("fr-FR")+" CDF";
   }
 
-  function renderHistory() {
-    const container = $("history");
-    container.replaceChildren();
-
-    if (history.length === 0) {
-      const p = document.createElement("p");
-      p.className = "muted";
-      p.textContent = "Aucune opération pour le moment.";
-      container.appendChild(p);
-      return;
-    }
-
-    history.forEach(item => {
-      const entry = document.createElement("div");
-      entry.className = "entry";
-
-      const title = document.createElement("strong");
-      title.textContent = item.type + " — " + item.name;
-
-      const amount = document.createElement("div");
-      amount.textContent =
-        (item.type === "Envoi" ? "− " : "+ ") +
-        formatMoney(item.amount) + " CDF";
-
-      const date = document.createElement("small");
-      date.className = "muted";
-      date.textContent = item.date;
-
-      entry.append(title, amount, date);
-      container.appendChild(entry);
-    });
+  function escapeHTML(value){
+    return String(value).replace(/[&<>"']/g,c=>({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    }[c]));
   }
 
-  function renderMessages() {
-    const container = $("messageList");
-    container.replaceChildren();
-
-    if (messages.length === 0) {
-      const p = document.createElement("p");
-      p.className = "muted";
-      p.textContent = "Aucun message pour le moment.";
-      container.appendChild(p);
-      return;
-    }
-
-    messages.forEach(message => {
-      const entry = document.createElement("div");
-      entry.className = "entry";
-
-      const title = document.createElement("strong");
-      title.textContent = "À : " + message.contact;
-
-      const content = document.createElement("p");
-      content.textContent = message.text;
-
-      const date = document.createElement("small");
-      date.className = "muted";
-      date.textContent = message.date;
-
-      entry.append(title, content, date);
-      container.appendChild(entry);
-    });
+  function notify(message){
+    $("feedback").textContent=message;
+    $("feedback").className="notice";
+    window.scrollTo({top:0,behavior:"smooth"});
   }
 
-  $("showPin").addEventListener("click", function () {
-    const pin = $("pin");
-    const showing = pin.type === "password";
-    pin.type = showing ? "text" : "password";
-    this.textContent = showing ? "Masquer le PIN" : "Afficher le PIN";
-  });
-
-  $("loginForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const pin = $("pin").value;
-
-    if (!/^[0-9]{4}$/.test(pin)) {
-      $("loginError").textContent = "Entre un PIN de 4 chiffres.";
-      return;
+  function showPage(page){
+    $("login").classList.add("hidden");
+    $("home").classList.add("hidden");
+    document.querySelectorAll(".page").forEach(el=>el.classList.add("hidden"));
+    if(page==="login") $("login").classList.remove("hidden");
+    else if(page==="home"){
+      $("home").classList.remove("hidden");
+      render();
+    }else{
+      const section=$(page);
+      if(section) section.classList.remove("hidden");
+      render();
     }
+    $("feedback").textContent="";
+    $("feedback").className="";
+  }
 
-    if (pin !== DEMO_PIN) {
-      $("loginError").textContent = "PIN incorrect. Réessaie.";
-      $("pin").value = "";
-      $("pin").focus();
-      return;
-    }
+  function renderTransactions(list,emptyText){
+    if(!list.length) return '<p class="muted">'+emptyText+'</p>';
+    return list.map(t=>{
+      const incoming=t.type==="Réception";
+      const sign=incoming?"+":"−";
+      return '<div class="item"><div class="row"><strong>'+
+        escapeHTML(t.type)+'</strong><strong class="'+
+        (incoming?"green":"red")+'">'+sign+money(t.amount)+
+        '</strong></div><div>'+escapeHTML(t.person)+'</div>'+
+        '<div class="muted">'+escapeHTML(t.date)+'</div></div>';
+    }).join("");
+  }
 
-    $("loginError").textContent = "";
-    $("pin").value = "";
-    loginScreen.classList.add("hidden");
-    appScreen.classList.remove("hidden");
-    updateBalance();
-    showPage("send");
-  });
+  function renderMessages(){
+    $("messageList").innerHTML=data.messages.length
+      ?data.messages.map(m=>'<div class="item"><div>'+
+        escapeHTML(m.text)+'</div><div class="muted">'+
+        escapeHTML(m.date)+'</div></div>').join("")
+      :'<p class="muted">Aucun message pour le moment.</p>';
+  }
 
-  $("logout").addEventListener("click", function () {
-    appScreen.classList.add("hidden");
-    loginScreen.classList.remove("hidden");
-    $("loginError").textContent = "";
-    $("pin").value = "";
-    window.scrollTo(0, 0);
-  });
-
-  document.querySelectorAll("[data-page]").forEach(button => {
-    button.addEventListener("click", function () {
-      showPage(this.dataset.page);
-    });
-  });
-
-  $("sendForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const recipient = $("recipient").value.trim();
-    const amount = Number($("sendAmount").value);
-
-    if (!recipient || !Number.isSafeInteger(amount) || amount <= 0) {
-      $("sendResult").textContent = "Vérifie le nom et le montant.";
-      return;
-    }
-
-    if (amount > balance) {
-      $("sendResult").textContent = "Solde insuffisant.";
-      return;
-    }
-
-    balance -= amount;
-    addHistory("Envoi", recipient, amount);
-    updateBalance();
-
-    $("sendResult").textContent =
-      "Envoi fictif confirmé pour " + recipient +
-      " : " + formatMoney(amount) + " CDF.";
-
-    $("sendForm").reset();
-  });
-
-  $("receiveForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const sender = $("sender").value.trim();
-    const amount = Number($("receiveAmount").value);
-
-    if (!sender || !Number.isSafeInteger(amount) || amount <= 0) {
-      $("receiveResult").textContent =
-        "Vérifie le nom et le montant.";
-      return;
-    }
-
-    if (!Number.isSafeInteger(balance + amount)) {
-      $("receiveResult").textContent = "Montant trop élevé.";
-      return;
-    }
-
-    balance += amount;
-    addHistory("Réception", sender, amount);
-    updateBalance();
-
-    $("receiveResult").textContent =
-      "Réception fictive confirmée : " +
-      formatMoney(amount) + " CDF.";
-
-    $("receiveForm").reset();
-  });
-
-  $("messageForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const contact = $("contact").value.trim();
-    const messageText = $("messageText").value.trim();
-
-    if (!contact || !messageText) return;
-
-    messages.unshift({
-      contact,
-      text: messageText,
-      date: new Date().toLocaleString("fr-FR")
-    });
-
+  function render(){
+    const b=money(data.balance);
+    $("homeBalance").textContent=b;
+    $("walletBalance").textContent=b;
+    $("sendBalance").textContent=b;
+    $("recentTransactions").innerHTML=renderTransactions(
+      data.transactions.slice(0,3),"Aucune opération pour le moment."
+    );
+    $("allTransactions").innerHTML=renderTransactions(
+      data.transactions,"Ton historique est vide."
+    );
     renderMessages();
+  }
+
+  $("showPin").addEventListener("click",()=>{
+    const field=$("pin");
+    field.type=field.type==="password"?"text":"password";
+    $("showPin").textContent=field.type==="password"
+      ?"Afficher le PIN":"Masquer le PIN";
+  });
+
+  $("loginForm").addEventListener("submit",e=>{
+    e.preventDefault();
+    if($("pin").value==="1234"){
+      sessionStorage.setItem("baggira_logged_in","yes");
+      $("pin").value="";
+      showPage("home");
+      notify("Connexion réussie !");
+    }else{
+      alert("PIN incorrect. Pour cette démonstration, utilise 1234.");
+    }
+  });
+
+  $("logout").addEventListener("click",()=>{
+    sessionStorage.removeItem("baggira_logged_in");
+    showPage("login");
+    notify("Tu es déconnecté.");
+  });
+
+  document.querySelectorAll("[data-page]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      showPage(button.dataset.page);
+    });
+  });
+
+  function addTransaction(type,person,amount){
+    data.transactions.unshift({
+      type:type,
+      person:person,
+      amount:amount,
+      date:new Date().toLocaleString("fr-FR")
+    });
+    if(data.transactions.length>200) data.transactions.length=200;
+  }
+
+  $("sendForm").addEventListener("submit",e=>{
+    e.preventDefault();
+    const person=$("recipient").value.trim();
+    const phone=$("recipientPhone").value.trim();
+    const amount=Number($("sendAmount").value);
+
+    if(!person||!phone||!Number.isSafeInteger(amount)||amount<=0){
+      alert("Vérifie le destinataire et le montant.");
+      return;
+    }
+    if(amount>data.balance){
+      alert("Solde insuffisant !");
+      return;
+    }
+    if(!confirm("Simuler l'envoi de "+money(amount)+" à "+person+" ?")) return;
+
+    data.balance-=amount;
+    addTransaction("Envoi",person+" ("+phone+")",amount);
+    save();
+    $("sendForm").reset();
+    showPage("home");
+    notify("Envoi simulé enregistré dans l'historique.");
+  });
+
+  $("receiveForm").addEventListener("submit",e=>{
+    e.preventDefault();
+    const person=$("sender").value.trim();
+    const amount=Number($("receiveAmount").value);
+
+    if(!person||!Number.isSafeInteger(amount)||amount<=0){
+      alert("Vérifie le nom et le montant.");
+      return;
+    }
+    if(!Number.isSafeInteger(data.balance+amount)){
+      alert("Montant trop élevé.");
+      return;
+    }
+    if(!confirm("Simuler la réception de "+money(amount)+" de "+person+" ?")) return;
+
+    data.balance+=amount;
+    addTransaction("Réception",person,amount);
+    save();
+    $("receiveForm").reset();
+    showPage("home");
+    notify("Réception simulée enregistrée dans l'historique.");
+  });
+
+  $("messageForm").addEventListener("submit",e=>{
+    e.preventDefault();
+    const text=$("messageText").value.trim();
+    if(!text) return;
+    data.messages.unshift({
+      text:text,
+      date:new Date().toLocaleString("fr-FR")
+    });
+    if(data.messages.length>200) data.messages.length=200;
+    save();
     $("messageForm").reset();
+    renderMessages();
+    notify("Message enregistré sur cet appareil.");
   });
 
-  $("backHome").addEventListener("click", function () {
-    showPage("send");
+  $("clearHistory").addEventListener("click",()=>{
+    if(!confirm("Effacer toutes les transactions de l'historique ?")) return;
+    data.transactions=[];
+    save();
+    render();
+    notify("Historique effacé. Le solde reste inchangé.");
   });
 
-  updateBalance();
-  renderHistory();
-  renderMessages();
+  if(sessionStorage.getItem("baggira_logged_in")==="yes"){
+    showPage("home");
+  }else{
+    showPage("login");
+  }
 })();
 </script>
-
 </body>
-  </html>
-  
+        </html>
+        
