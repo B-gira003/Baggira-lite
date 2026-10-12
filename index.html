@@ -3,570 +3,270 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#087f5b">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#087f52">
 <title>Baggira Mobile</title>
 <style>
-:root {
-  --green: #087f5b;
-  --dark: #07543f;
-  --light: #e9f8f0;
-  --white: #ffffff;
-  --bg: #f3f7f5;
-  --text: #18352b;
-  --muted: #718078;
-  --border: #dce9e2;
-  --red: #c0392b;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, sans-serif;
-}
-button, input, textarea {
-  font: inherit;
-}
-button { cursor: pointer; }
-header {
-  background: var(--green);
-  color: white;
-  padding: 22px 18px 30px;
-  border-radius: 0 0 26px 26px;
-}
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 22px;
-  font-weight: bold;
-}
-.logo {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: white;
-  color: var(--green);
-  font-size: 23px;
-}
-.subtitle { font-size: 13px; opacity: .85; margin-top: 5px; }
-.container {
-  width: min(100% - 28px, 540px);
-  margin: 20px auto 35px;
-}
-.card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 19px;
-  padding: 18px;
-  margin-bottom: 16px;
-  box-shadow: 0 5px 18px #173e2a08;
-}
-h2 { font-size: 19px; margin: 0 0 16px; }
-h3 { font-size: 16px; margin: 0 0 12px; }
-p { line-height: 1.5; }
-.small { color: var(--muted); font-size: 13px; }
-.balance-card {
-  background: linear-gradient(135deg, #087f5b, #064d3a);
-  color: white;
-  border: none;
-}
-.balance-label { opacity: .85; font-size: 14px; }
-.balance {
-  font-size: clamp(25px, 7vw, 34px);
-  font-weight: bold;
-  margin: 12px 0;
-  overflow-wrap: anywhere;
-}
-.pill {
-  display: inline-block;
-  padding: 6px 10px;
-  background: #ffffff20;
-  border-radius: 20px;
-  font-size: 12px;
-}
-label {
-  display: block;
-  margin: 13px 0 7px;
-  font-size: 14px;
-  font-weight: bold;
-}
-input, textarea {
-  width: 100%;
-  padding: 13px;
-  border: 1px solid var(--border);
-  border-radius: 11px;
-  background: white;
-  color: var(--text);
-  outline-color: var(--green);
-}
-textarea { resize: vertical; min-height: 80px; }
-.btn {
-  width: 100%;
-  border: 0;
-  border-radius: 12px;
-  padding: 13px 15px;
-  font-weight: bold;
-  background: var(--green);
-  color: white;
-  margin-top: 12px;
-}
-.btn:active { transform: scale(.99); }
-.btn-light {
-  background: var(--light);
-  color: var(--dark);
-}
-.btn-red {
-  background: #fff0ed;
-  color: var(--red);
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-.action {
-  min-height: 112px;
-  border: 1px solid var(--border);
-  background: white;
-  border-radius: 17px;
-  padding: 16px 8px;
-  color: var(--text);
-  font-weight: bold;
-}
-.action .emoji { display: block; font-size: 28px; margin-bottom: 10px; }
-.action:active { background: var(--light); }
-.notice {
-  border-radius: 11px;
-  background: var(--light);
-  color: var(--dark);
-  padding: 12px;
-  font-size: 13px;
-  line-height: 1.5;
-  margin-top: 12px;
-}
-.feedback {
-  font-size: 14px;
-  line-height: 1.5;
-  margin-top: 12px;
-  overflow-wrap: anywhere;
-}
-.tx {
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-  overflow-wrap: anywhere;
-}
-.tx:last-child { border-bottom: 0; }
-.tx strong { display: block; margin-bottom: 5px; }
-.tx small { color: var(--muted); }
-.positive { color: var(--green); }
-.negative { color: var(--red); }
-.message {
-  background: var(--light);
-  border-radius: 12px;
-  padding: 11px;
-  margin: 9px 0;
-  overflow-wrap: anywhere;
-}
-.message small { color: var(--muted); display: block; margin-top: 5px; }
-footer {
-  text-align: center;
-  color: var(--muted);
-  font-size: 12px;
-  padding: 5px 15px 28px;
-}
-.hidden { display: none !important; }
+:root{--green:#087f52;--dark:#075c3d;--light:#e9f8f0;--bg:#f4f8f5;--white:#fff;--text:#18352a;--muted:#718078}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Arial,sans-serif;color:var(--text)}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+header{background:linear-gradient(135deg,var(--green),var(--dark));color:white;padding:24px 20px 30px;border-radius:0 0 28px 28px}
+.brand{font-size:22px;font-weight:800;letter-spacing:.2px}
+.brand span{color:#b9f4d1}
+header p{margin:8px 0 0;font-size:13px;opacity:.9}
+main{max-width:520px;margin:auto;padding:18px 16px 35px}
+.card{background:white;padding:18px;border-radius:20px;margin-bottom:16px;box-shadow:0 5px 18px #163d2510}
+h2{font-size:18px;margin:0 0 15px}
+h3{font-size:15px;margin:0 0 10px}
+label{display:block;font-size:13px;margin:12px 0 6px;color:var(--muted)}
+input,textarea{width:100%;padding:13px;border:1px solid #dce8e0;border-radius:12px;background:#fbfdfb;outline-color:var(--green)}
+textarea{min-height:80px;resize:vertical}
+.btn{border:0;border-radius:12px;padding:13px 15px;font-weight:700;background:var(--green);color:white;width:100%;margin-top:10px}
+.btn.secondary{background:var(--light);color:var(--dark)}
+.btn.danger{background:#fff0ee;color:#b3261e}
+.hidden{display:none!important}
+.balance{background:linear-gradient(135deg,#087f52,#064c35);color:white;border-radius:20px;padding:21px;margin-bottom:17px}
+.balance small{opacity:.85}
+.amount{font-size:30px;font-weight:800;margin:10px 0}
+.balance .currency{font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.action{background:white;border:1px solid #e0ebe3;border-radius:17px;padding:17px 10px;text-align:center;color:var(--text);font-weight:700;box-shadow:0 3px 10px #163d2508}
+.action .ico{display:block;font-size:27px;margin-bottom:9px}
+.action:active{transform:scale(.98)}
+.muted{font-size:13px;color:var(--muted);line-height:1.5}
+.item{padding:12px 0;border-bottom:1px solid #edf2ee;overflow-wrap:anywhere}
+.item:last-child{border-bottom:0}
+.item strong{display:block;font-size:14px}
+.item small{color:var(--muted);display:block;margin-top:5px}
+.positive{color:var(--green);font-weight:800}
+.negative{color:#c14b40;font-weight:800}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.link{background:none;border:0;color:var(--green);font-weight:700;padding:5px}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:10px}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="brand">
-    <div class="logo">B</div>
-    <div>
-      Baggira Mobile
-      <div class="subtitle">Votre portefeuille, vos services</div>
-    </div>
-  </div>
+  <div class="brand">Baggira <span>Mobile</span></div>
+  <p>Votre portefeuille, vos échanges, simplement.</p>
 </header>
 
-<main class="container">
+<main>
+<section id="login" class="card">
+  <h2>Bienvenue 👋</h2>
+  <p class="muted">Saisissez votre code PIN pour accéder à votre espace.</p>
+  <label for="loginPin">Code PIN à 4 chiffres</label>
+  <input id="loginPin" type="password" inputmode="numeric" maxlength="4" placeholder="••••">
+  <button class="btn" onclick="login()">Se connecter</button>
+  <p id="loginError" class="muted"></p>
+  <p class="muted">Première démonstration : PIN initial 1234.</p>
+</section>
 
-  <section id="login" class="card">
-    <h2>🔐 Connexion sécurisée</h2>
-    <p class="small">Entrez votre code PIN à 4 chiffres pour accéder à votre espace de démonstration.</p>
-    <form id="loginForm">
-      <label for="loginPin">Code PIN</label>
-      <input id="loginPin" type="password" inputmode="numeric"
-        pattern="[0-9]{4}" maxlength="4" placeholder="••••" required>
-      <button class="btn" type="submit">Se connecter</button>
-    </form>
-    <div id="loginFeedback" class="feedback" role="status"></div>
-    <div class="notice">Prototype de démonstration : ne saisissez aucun vrai code bancaire.</div>
+<section id="app" class="hidden">
+  <div class="topline" style="margin:2px 2px 14px">
+    <div><strong>Bonjour ! 👋</strong><div class="muted">Bienvenue dans votre espace</div></div>
+    <button class="link" onclick="logout()">Déconnexion ↗</button>
+  </div>
+
+  <div class="balance">
+    <small>Solde disponible (démonstration)</small>
+    <div class="amount"><span id="balance">250 000</span> <span class="currency">CDF</span></div>
+    <small>Portefeuille Baggira Mobile</small>
+  </div>
+
+  <div class="grid">
+    <button class="action" onclick="showPage('send')"><span class="ico">📤</span>Envoyer</button>
+    <button class="action" onclick="showPage('receive')"><span class="ico">📥</span>Recevoir</button>
+    <button class="action" onclick="showPage('messages')"><span class="ico">💬</span>Messages</button>
+    <button class="action" onclick="showPage('wallet')"><span class="ico">👛</span>Portefeuille</button>
+  </div>
+
+  <section id="homePage" class="card" style="margin-top:17px">
+    <div class="topline"><h2>Activité récente</h2><button class="link" onclick="showPage('wallet')">Tout voir</button></div>
+    <div id="recent"></div>
   </section>
 
-  <section id="home" class="hidden">
-    <div class="card balance-card">
-      <div class="balance-label">Solde disponible (simulation)</div>
-      <div class="balance" id="homeBalance">250 000 CDF</div>
-      <span class="pill">● Portefeuille de démonstration</span>
-    </div>
-
-    <div class="card">
-      <h2>Bonjour 👋</h2>
-      <p class="small">Que souhaitez-vous faire aujourd'hui ?</p>
-      <div class="grid">
-        <button class="action" data-page="send"><span class="emoji">📤</span>Envoyer</button>
-        <button class="action" data-page="receive"><span class="emoji">📥</span>Recevoir</button>
-        <button class="action" data-page="messages"><span class="emoji">💬</span>Messages</button>
-        <button class="action" data-page="wallet"><span class="emoji">💰</span>Portefeuille</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Transactions récentes</h3>
-      <div id="recentTransactions" class="small">Aucune transaction pour le moment.</div>
-      <button class="btn btn-light" data-page="wallet">Voir le portefeuille</button>
-    </div>
-
-    <div class="card">
-      <h3>Compte et sécurité</h3>
-      <button class="btn btn-light" data-page="security">Modifier mon PIN</button>
-      <button class="btn btn-red" id="logout">Se déconnecter</button>
-    </div>
+  <section id="sendPage" class="card hidden">
+    <h2>📤 Envoyer de l'argent</h2>
+    <p class="muted">Simulation uniquement : aucun argent réel n'est transféré.</p>
+    <label>Nom du destinataire</label><input id="recipient" placeholder="Ex. : Alex">
+    <label>Montant en CDF</label><input id="sendAmount" type="number" min="1" placeholder="Ex. : 5000">
+    <button class="btn" onclick="sendMoney()">Confirmer l'envoi fictif</button>
+    <button class="btn secondary" onclick="showPage('home')">Retour à l'accueil</button>
   </section>
 
-  <section id="send" class="hidden">
-    <div class="card">
-      <h2>📤 Envoyer de l'argent</h2>
-      <p class="small">Solde disponible : <strong id="sendBalance">250 000 CDF</strong></p>
-      <form id="sendForm">
-        <label for="sendRecipient">Nom du destinataire</label>
-        <input id="sendRecipient" maxlength="80" placeholder="Ex. Jean" required>
-        <label for="sendAmount">Montant (CDF)</label>
-        <input id="sendAmount" type="number" min="1" step="1" placeholder="Ex. 5000" required>
-        <button class="btn" type="submit">Confirmer l'envoi simulé</button>
-      </form>
-      <div id="sendFeedback" class="feedback" role="status"></div>
-      <div class="notice">Aucun argent réel n'est envoyé. Cette opération modifie uniquement le solde fictif enregistré dans ce navigateur.</div>
-      <button class="btn btn-light" data-page="home">← Retour à l'accueil</button>
-    </div>
+  <section id="receivePage" class="card hidden">
+    <h2>📥 Recevoir de l'argent</h2>
+    <p class="muted">Ajoutez un montant fictif à votre portefeuille pour tester l'application.</p>
+    <label>Nom de l'expéditeur</label><input id="sender" placeholder="Ex. : Marie">
+    <label>Montant en CDF</label><input id="receiveAmount" type="number" min="1" placeholder="Ex. : 10000">
+    <button class="btn" onclick="receiveMoney()">Simuler la réception</button>
+    <button class="btn secondary" onclick="showPage('home')">Retour à l'accueil</button>
   </section>
 
-  <section id="receive" class="hidden">
-    <div class="card">
-      <h2>📥 Recevoir de l'argent</h2>
-      <p class="small">Solde actuel : <strong id="receiveBalance">250 000 CDF</strong></p>
-      <form id="receiveForm">
-        <label for="receiveSender">Nom de l'expéditeur</label>
-        <input id="receiveSender" maxlength="80" placeholder="Ex. Marie" required>
-        <label for="receiveAmount">Montant (CDF)</label>
-        <input id="receiveAmount" type="number" min="1" step="1" placeholder="Ex. 10000" required>
-        <button class="btn" type="submit">Confirmer la réception simulée</button>
-      </form>
-      <div id="receiveFeedback" class="feedback" role="status"></div>
-      <div class="notice">Cette réception est fictive et ne provient d'aucun compte bancaire réel.</div>
-      <button class="btn btn-light" data-page="home">← Retour à l'accueil</button>
-    </div>
+  <section id="messagesPage" class="card hidden">
+    <h2>💬 Messages</h2>
+    <p class="muted">Les messages sont enregistrés sur cet appareil uniquement. Ils ne sont pas envoyés à d'autres utilisateurs.</p>
+    <label>Votre message</label><textarea id="messageText" placeholder="Écrivez votre message..."></textarea>
+    <button class="btn" onclick="sendMessage()">Enregistrer le message</button>
+    <div id="messageList" style="margin-top:12px"></div>
+    <button class="btn secondary" onclick="showPage('home')">Retour à l'accueil</button>
   </section>
 
-  <section id="messages" class="hidden">
-    <div class="card">
-      <h2>💬 Messagerie</h2>
-      <p class="small">Messages enregistrés uniquement sur ce téléphone.</p>
-      <form id="messageForm">
-        <label for="messageContact">Nom du contact</label>
-        <input id="messageContact" maxlength="80" placeholder="Ex. Paul" required>
-        <label for="messageText">Votre message</label>
-        <textarea id="messageText" maxlength="1000" placeholder="Écrivez votre message..." required></textarea>
-        <button class="btn" type="submit">Enregistrer le message</button>
-      </form>
-      <div id="messageFeedback" class="feedback" role="status"></div>
-      <h3 style="margin-top:22px">Mes messages</h3>
-      <div id="messageList" class="small">Aucun message pour le moment.</div>
-      <button class="btn btn-light" data-page="home">← Retour à l'accueil</button>
-    </div>
+  <section id="walletPage" class="card hidden">
+    <h2>👛 Mon portefeuille</h2>
+    <p class="muted">Solde de démonstration</p>
+    <h2><span id="walletBalance">250 000</span> CDF</h2>
+    <div class="topline"><h3>Historique des opérations</h3><button class="link" onclick="clearHistory()">Effacer</button></div>
+    <div id="history"></div>
+    <hr style="border:0;border-top:1px solid #edf2ee;margin:18px 0">
+    <h3>Sécurité</h3>
+    <label>Nouveau PIN à 4 chiffres</label><input id="newPin" type="password" inputmode="numeric" maxlength="4" placeholder="Nouveau PIN">
+    <label>Confirmer le nouveau PIN</label><input id="confirmPin" type="password" inputmode="numeric" maxlength="4" placeholder="Confirmer le PIN">
+    <button class="btn" onclick="changePin()">Changer mon PIN</button>
+    <button class="btn secondary" onclick="showPage('home')">Retour à l'accueil</button>
   </section>
+</section>
 
-  <section id="wallet" class="hidden">
-    <div class="card balance-card">
-      <div class="balance-label">Mon portefeuille fictif</div>
-      <div class="balance" id="walletBalance">250 000 CDF</div>
-      <span class="pill">CDF · Démonstration</span>
-    </div>
-    <div class="card">
-      <h2>Historique des transactions</h2>
-      <div id="allTransactions">Aucune transaction pour le moment.</div>
-      <button class="btn btn-light" data-page="home">← Retour à l'accueil</button>
-    </div>
-  </section>
-
-  <section id="security" class="hidden">
-    <div class="card">
-      <h2>🛡️ Sécurité du compte</h2>
-      <form id="pinForm">
-        <label for="oldPin">PIN actuel</label>
-        <input id="oldPin" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required>
-        <label for="newPin">Nouveau PIN à 4 chiffres</label>
-        <input id="newPin" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required>
-        <label for="confirmPin">Confirmer le nouveau PIN</label>
-        <input id="confirmPin" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required>
-        <button class="btn" type="submit">Enregistrer le nouveau PIN</button>
-      </form>
-      <div id="securityFeedback" class="feedback" role="status"></div>
-      <div class="notice">Ce PIN de démonstration est stocké dans le navigateur. Il ne protège pas de véritables fonds.</div>
-      <button class="btn btn-light" data-page="home">← Retour à l'accueil</button>
-    </div>
-  </section>
-
+<footer>Baggira Mobile · Prototype de démonstration · Aucun service bancaire réel</footer>
 </main>
 
-<footer>
-  Baggira Mobile · Prototype non bancaire · Aucune transaction réelle
-</footer>
-
 <script>
-(function () {
-  "use strict";
+const DATA_KEY='baggira_demo_v2';
+const PIN_KEY='baggira_demo_pin_v1';
+const SESSION_KEY='baggira_logged_in';
 
-  const DATA_KEY = "baggira_demo_v2";
-  const PIN_KEY = "baggira_demo_pin_v1";
-  const DEFAULT_PIN = "1234";
-
-  const $ = id => document.getElementById(id);
-
-  function loadData() {
-    try {
-      const saved = JSON.parse(localStorage.getItem(DATA_KEY) || "null");
-      if (saved && Number.isFinite(Number(saved.balance)) &&
-          Array.isArray(saved.transactions) && Array.isArray(saved.messages)) {
-        return {
-          balance: Math.max(0, Number(saved.balance)),
-          transactions: saved.transactions,
-          messages: saved.messages
-        };
-      }
-    } catch (e) {}
-    return { balance: 250000, transactions: [], messages: [] };
-  }
-
-  let data = loadData();
-
-  function saveData() {
-    try {
-      localStorage.setItem(DATA_KEY, JSON.stringify(data));
-      return true;
-    } catch (e) {
-      alert("Impossible d'enregistrer les données dans ce navigateur.");
-      return false;
+function readData(){
+  try{
+    const d=JSON.parse(localStorage.getItem(DATA_KEY)||'null');
+    if(d && typeof d==='object'){
+      const balance=Number(d.balance ?? d.solde ?? 250000);
+      const history=Array.isArray(d.history)?d.history:
+        Array.isArray(d.transactions)?d.transactions:[];
+      return {...d,balance,history};
     }
-  }
+  }catch(e){}
+  return {balance:250000,history:[],messages:[]};
+}
+let data=readData();
+if(!Array.isArray(data.messages)) data.messages=[];
 
-  function getPin() {
-    try {
-      return localStorage.getItem(PIN_KEY) || DEFAULT_PIN;
-    } catch (e) {
-      return DEFAULT_PIN;
-    }
+function saveData(){localStorage.setItem(DATA_KEY,JSON.stringify(data))}
+function fmt(n){return Number(n).toLocaleString('fr-FR',{maximumFractionDigits:0})}
+function pinValue(){return localStorage.getItem(PIN_KEY)||'1234'}
+function login(){
+  const p=document.getElementById('loginPin').value;
+  if(p===pinValue()){
+    localStorage.setItem(SESSION_KEY,'yes');
+    document.getElementById('loginError').textContent='';
+    document.getElementById('login').classList.add('hidden');
+    document.getElementById('app').classList.remove('hidden');
+    render();
+  }else{
+    document.getElementById('loginError').textContent='Code PIN incorrect. Réessayez.';
   }
-
-  function formatMoney(value) {
-    return Math.round(Number(value) || 0).toLocaleString("fr-FR") + " CDF";
-  }
-
-  function escapeHTML(value) {
-    return String(value).replace(/[&<>"']/g, c => ({
-      "&": "&amp;", "<": "&lt;", ">": "&gt;",
-      '"': "&quot;", "'": "&#39;"
-    })[c]);
-  }
-
-  function showPage(page) {
-    if (page !== "login" && sessionStorage.getItem("baggira_logged_in") !== "yes") {
-      page = "login";
-    }
-    ["login", "home", "send", "receive", "messages", "wallet", "security"]
-      .forEach(id => $(id).classList.toggle("hidden", id !== page));
-    if (page !== "login") renderAll();
-    window.scrollTo(0, 0);
-  }
-
-  function addTransaction(type, name, amount) {
-    data.transactions.unshift({
-      type: type,
-      name: name,
-      amount: amount,
-      date: new Date().toLocaleString("fr-FR")
-    });
-    if (data.transactions.length > 100) data.transactions.length = 100;
-    saveData();
-    renderAll();
-  }
-
-  function renderTransactions(target, limit) {
-    const list = data.transactions.slice(0, limit || data.transactions.length);
-    if (!list.length) {
-      $(target).innerHTML = '<p class="small">Aucune transaction pour le moment.</p>';
-      return;
-    }
-    $(target).innerHTML = list.map(tx => {
-      const sent = tx.type === "Envoi";
-      return '<div class="tx"><strong>' + escapeHTML(tx.type) +
-        ' · ' + escapeHTML(tx.name) + '</strong><span class="' +
-        (sent ? "negative" : "positive") + '">' + (sent ? "−" : "+") +
-        escapeHTML(formatMoney(tx.amount)) + '</span><br><small>' +
-        escapeHTML(tx.date) + '</small></div>';
-    }).join("");
-  }
-
-  function renderMessages() {
-    if (!data.messages.length) {
-      $("messageList").innerHTML = '<p class="small">Aucun message pour le moment.</p>';
-      return;
-    }
-    $("messageList").innerHTML = data.messages.slice().reverse().map(msg =>
-      '<div class="message"><strong>' + escapeHTML(msg.contact) +
-      '</strong><div>' + escapeHTML(msg.text).replace(/\n/g, "<br>") +
-      '</div><small>' + escapeHTML(msg.date) + '</small></div>'
-    ).join("");
-  }
-
-  function renderAll() {
-    const money = formatMoney(data.balance);
-    ["homeBalance", "sendBalance", "receiveBalance", "walletBalance"]
-      .forEach(id => $(id).textContent = money);
-    renderTransactions("recentTransactions", 3);
-    renderTransactions("allTransactions");
-    renderMessages();
-  }
-
-  document.querySelectorAll("[data-page]").forEach(button => {
-    button.addEventListener("click", () => showPage(button.dataset.page));
+}
+function logout(){
+  localStorage.removeItem(SESSION_KEY);
+  document.getElementById('app').classList.add('hidden');
+  document.getElementById('login').classList.remove('hidden');
+  document.getElementById('loginPin').value='';
+}
+function showPage(name){
+  ['home','send','receive','messages','wallet'].forEach(p=>{
+    document.getElementById(p+'Page').classList.toggle('hidden',p!=='home'&&p!==name);
   });
-
-  $("loginForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-    const entered = $("loginPin").value;
-    if (entered === getPin()) {
-      sessionStorage.setItem("baggira_logged_in", "yes");
-      $("loginPin").value = "";
-      $("loginFeedback").textContent = "";
-      showPage("home");
-    } else {
-      $("loginFeedback").textContent = "Code PIN incorrect. Réessayez.";
-      $("loginFeedback").className = "feedback negative";
-    }
+  if(name==='home') document.getElementById('homePage').classList.remove('hidden');
+  if(name!=='home') document.getElementById('homePage').classList.add('hidden');
+  render();
+}
+function addHistory(type,name,amount){
+  data.history.unshift({type,name,amount,date:new Date().toLocaleString('fr-FR')});
+  saveData();render();
+}
+function sendMoney(){
+  const name=document.getElementById('recipient').value.trim();
+  const amount=Number(document.getElementById('sendAmount').value);
+  if(!name||!Number.isFinite(amount)||amount<=0)return alert('Entrez un destinataire et un montant valide.');
+  if(amount>data.balance)return alert('Solde insuffisant.');
+  data.balance-=amount;addHistory('Envoi',name,-amount);
+  document.getElementById('recipient').value='';
+  document.getElementById('sendAmount').value='';
+  alert('Envoi fictif enregistré. Aucun argent réel n’a été transféré.');
+  showPage('home');
+}
+function receiveMoney(){
+  const name=document.getElementById('sender').value.trim();
+  const amount=Number(document.getElementById('receiveAmount').value);
+  if(!name||!Number.isFinite(amount)||amount<=0)return alert('Entrez un expéditeur et un montant valide.');
+  data.balance+=amount;addHistory('Réception',name,amount);
+  document.getElementById('sender').value='';
+  document.getElementById('receiveAmount').value='';
+  alert('Réception fictive enregistrée.');
+  showPage('home');
+}
+function sendMessage(){
+  const text=document.getElementById('messageText').value.trim();
+  if(!text)return alert('Écrivez d’abord un message.');
+  data.messages.unshift({text,date:new Date().toLocaleString('fr-FR')});
+  saveData();document.getElementById('messageText').value='';renderMessages();
+}
+function renderMessages(){
+  const el=document.getElementById('messageList');
+  el.innerHTML='';
+  if(!data.messages.length){el.innerHTML='<p class="muted">Aucun message pour le moment.</p>';return}
+  data.messages.forEach(m=>{
+    const div=document.createElement('div');div.className='item';
+    const strong=document.createElement('strong');strong.textContent=m.text;
+    const small=document.createElement('small');small.textContent=m.date||'';
+    div.append(strong,small);el.appendChild(div);
   });
-
-  $("sendForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-    const recipient = $("sendRecipient").value.trim();
-    const amount = Number($("sendAmount").value);
-    if (!recipient || !Number.isSafeInteger(amount) || amount <= 0) {
-      $("sendFeedback").textContent = "Entrez un nom et un montant entier valide.";
-      $("sendFeedback").className = "feedback negative";
-      return;
-    }
-    if (amount > data.balance) {
-      $("sendFeedback").textContent = "Solde insuffisant.";
-      $("sendFeedback").className = "feedback negative";
-      return;
-    }
-    data.balance -= amount;
-    addTransaction("Envoi", recipient, amount);
-    $("sendForm").reset();
-    $("sendFeedback").textContent = "Envoi simulé enregistré. Aucun argent réel n'a été transféré.";
-    $("sendFeedback").className = "feedback positive";
+}
+function renderHistory(target,items){
+  const el=document.getElementById(target);el.innerHTML='';
+  if(!items.length){el.innerHTML='<p class="muted">Aucune opération pour le moment.</p>';return}
+  items.forEach(h=>{
+    const div=document.createElement('div');div.className='item';
+    const line=document.createElement('div');line.className='topline';
+    const left=document.createElement('strong');left.textContent=(h.type||h.label||'Opération')+' · '+(h.name||h.recipient||'');
+    const val=document.createElement('span');
+    const amount=Number(h.amount ?? h.montant ?? 0);
+    val.className=amount>=0?'positive':'negative';
+    val.textContent=(amount>0?'+':'')+fmt(amount)+' CDF';
+    const small=document.createElement('small');small.textContent=h.date||h.createdAt||'';
+    line.append(left,val);div.append(line,small);el.appendChild(div);
   });
-
-  $("receiveForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-    const sender = $("receiveSender").value.trim();
-    const amount = Number($("receiveAmount").value);
-    if (!sender || !Number.isSafeInteger(amount) || amount <= 0 ||
-        data.balance + amount > Number.MAX_SAFE_INTEGER) {
-      $("receiveFeedback").textContent = "Entrez un nom et un montant entier valide.";
-      $("receiveFeedback").className = "feedback negative";
-      return;
-    }
-    data.balance += amount;
-    addTransaction("Réception", sender, amount);
-    $("receiveForm").reset();
-    $("receiveFeedback").textContent = "Réception simulée enregistrée.";
-    $("receiveFeedback").className = "feedback positive";
-  });
-
-  $("messageForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-    const contact = $("messageContact").value.trim();
-    const message = $("messageText").value.trim();
-    if (!contact || !message) return;
-    data.messages.push({
-      contact: contact,
-      text: message,
-      date: new Date().toLocaleString("fr-FR")
-    });
-    if (data.messages.length > 200) data.messages.shift();
-    saveData();
-    renderMessages();
-    $("messageForm").reset();
-    $("messageFeedback").textContent = "Message enregistré sur ce téléphone uniquement.";
-    $("messageFeedback").className = "feedback positive";
-  });
-
-  $("pinForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-    const oldPin = $("oldPin").value;
-    const newPin = $("newPin").value;
-    const confirmPin = $("confirmPin").value;
-    const feedback = $("securityFeedback");
-
-    if (oldPin !== getPin()) {
-      feedback.textContent = "Le PIN actuel est incorrect.";
-      feedback.className = "feedback negative";
-      return;
-    }
-    if (!/^[0-9]{4}$/.test(newPin)) {
-      feedback.textContent = "Le nouveau PIN doit contenir exactement 4 chiffres.";
-      feedback.className = "feedback negative";
-      return;
-    }
-    if (newPin !== confirmPin) {
-      feedback.textContent = "Les deux nouveaux PIN ne correspondent pas.";
-      feedback.className = "feedback negative";
-      return;
-    }
-    if (newPin === oldPin) {
-      feedback.textContent = "Choisissez un PIN différent de l'ancien.";
-      feedback.className = "feedback negative";
-      return;
-    }
-    try {
-      localStorage.setItem(PIN_KEY, newPin);
-      sessionStorage.removeItem("baggira_logged_in");
-      $("pinForm").reset();
-      alert("PIN modifié. Reconnectez-vous avec votre nouveau code.");
-      showPage("login");
-    } catch (e) {
-      feedback.textContent = "Impossible d'enregistrer le nouveau PIN.";
-      feedback.className = "feedback negative";
-    }
-  });
-
-  $("logout").addEventListener("click", function () {
-    sessionStorage.removeItem("baggira_logged_in");
-    showPage("login");
-    $("loginFeedback").textContent = "Vous êtes déconnecté.";
-    $("loginFeedback").className = "feedback positive";
-  });
-
-  renderAll();
-  showPage("login");
-})();
+}
+function render(){
+  document.getElementById('balance').textContent=fmt(data.balance);
+  document.getElementById('walletBalance').textContent=fmt(data.balance);
+  renderHistory('recent',data.history.slice(0,3));
+  renderHistory('history',data.history);
+  renderMessages();
+}
+function changePin(){
+  const p=document.getElementById('newPin').value;
+  const c=document.getElementById('confirmPin').value;
+  if(!/^\d{4}$/.test(p))return alert('Le PIN doit contenir exactement 4 chiffres.');
+  if(p!==c)return alert('Les deux codes PIN ne correspondent pas.');
+  localStorage.setItem(PIN_KEY,p);
+  document.getElementById('newPin').value='';
+  document.getElementById('confirmPin').value='';
+  alert('PIN modifié avec succès.');
+}
+function clearHistory(){
+  if(confirm('Effacer l’historique enregistré sur cet appareil ?')){
+    data.history=[];saveData();render();
+  }
+}
+if(localStorage.getItem(SESSION_KEY)==='yes'){
+  document.getElementById('login').classList.add('hidden');
+  document.getElementById('app').classList.remove('hidden');
+  render();
+}
 </script>
 </body>
-  </html>
+      </html>
   
