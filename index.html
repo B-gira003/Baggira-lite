@@ -3,381 +3,382 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#075e54">
 <title>Baggira Mobile</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f1f5f5;color:#172b2a}
-header{background:#075e54;color:white;padding:22px 16px;text-align:center}
+body{margin:0;background:#f1f5f5;color:#193330;font-family:Arial,sans-serif}
+header{background:#075e54;color:white;text-align:center;padding:22px 12px}
 header h1{margin:0;font-size:27px}
-header p{margin:7px 0 0;font-size:13px}
-main{max-width:520px;margin:auto;padding:16px}
+header p{margin:7px 0 0}
+main{max-width:520px;margin:auto;padding:15px}
 .card{background:white;border-radius:16px;padding:18px;margin-bottom:15px;box-shadow:0 3px 12px #0000000c}
 h2{font-size:20px;margin:0 0 15px}
 h3{font-size:16px;margin:0 0 12px}
-input,textarea,select{width:100%;padding:13px;margin:7px 0 12px;border:1px solid #ccd8d6;border-radius:9px;font-size:16px}
-button{border:0;border-radius:10px;padding:13px;font-size:15px;font-weight:bold;cursor:pointer}
+input,textarea{display:block;width:100%;padding:13px;margin:8px 0 13px;border:1px solid #ccd8d6;border-radius:9px;font-size:16px}
+button{padding:13px;border:0;border-radius:10px;font-size:15px;font-weight:bold;cursor:pointer}
 .primary{background:#087e70;color:white;width:100%}
 .secondary{background:#e5f3f0;color:#075e54;width:100%}
-.danger{background:#fff0ee;color:#b42318}
-.balance{background:linear-gradient(135deg,#075e54,#119b83);color:white}
-.balance small{opacity:.9}
-.amount{font-size:29px;font-weight:bold;margin:10px 0}
+.danger{background:#fff0ee;color:#b42318;width:100%}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .menu{background:white;border:1px solid #dce8e5;color:#075e54;min-height:85px}
-.menu span{display:block;font-size:25px;margin-bottom:8px}
+.menu span{display:block;font-size:24px;margin-bottom:8px}
 .hidden{display:none!important}
-.notice{background:#fff6d9;padding:11px;border-radius:9px;font-size:12px;margin-top:12px}
-.item{border-bottom:1px solid #edf0ef;padding:13px 0}
-.item:last-child{border-bottom:0}
-.item strong{display:block;margin-bottom:5px}
-.muted{color:#687977;font-size:13px}
-.green{color:#087e70}
-.red{color:#c0392b}
-.row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.balance{background:linear-gradient(135deg,#075e54,#119b83);color:white}
+.amount{font-size:28px;font-weight:bold;margin:12px 0}
+.muted{font-size:13px;color:#687977}
+.item{padding:13px 0;border-bottom:1px solid #edf0ef}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.green{color:#087e70}.red{color:#c0392b}
+.notice{background:#fff6d9;padding:12px;border-radius:9px;font-size:13px;margin:12px 0}
 .back{margin-bottom:14px}
-footer{text-align:center;color:#72817f;font-size:12px;padding:20px}
+footer{text-align:center;padding:20px;color:#72817f;font-size:12px}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>🟢 Baggira Mobile</h1>
-  <p>Messagerie et services monétaires</p>
+<h1>🟢 Baggira Mobile</h1>
+<p>Messagerie et services monétaires</p>
 </header>
 
 <main>
-  <section id="login" class="card">
-    <h2>Bienvenue !</h2>
-    <p>Connecte-toi pour accéder à ton espace.</p>
-    <form id="loginForm">
-      <label for="pin">Code PIN à 4 chiffres</label>
-      <input id="pin" type="password" inputmode="numeric"
-        maxlength="4" pattern="[0-9]{4}" placeholder="Entrer le PIN"
-        autocomplete="off" required>
-      <button type="button" id="showPin" class="secondary">Afficher le PIN</button>
-      <br><br>
-      <button class="primary" type="submit">Se connecter</button>
-    </form>
-    <p class="muted">PIN de démonstration : 1234</p>
-  </section>
+<section id="login" class="card">
+<h2>Bienvenue !</h2>
+<p>Connecte-toi avec ton code PIN.</p>
+<form id="loginForm">
+<label for="pin">Code PIN à 4 chiffres</label>
+<input id="pin" type="password" inputmode="numeric"
+maxlength="4" pattern="[0-9]{4}" autocomplete="off" required>
+<button type="button" id="showPin" class="secondary">Afficher le PIN</button>
+<br><br>
+<button class="primary">Se connecter</button>
+</form>
+<p class="muted">PIN initial de démonstration : 1234</p>
+</section>
 
-  <section id="home" class="hidden">
-    <div class="card balance">
-      <small>Mon solde fictif</small>
-      <div class="amount" id="homeBalance">250 000 CDF</div>
-      <small>Bienvenue sur Baggira Mobile</small>
-    </div>
+<section id="home" class="hidden">
+<div class="card balance">
+<div>Mon solde fictif</div>
+<div id="homeBalance" class="amount">250 000 CDF</div>
+<div>Bienvenue sur Baggira Mobile</div>
+</div>
 
-    <div class="card">
-      <h2>Mes services</h2>
-      <div class="grid">
-        <button class="menu" data-page="send"><span>📤</span>Envoyer</button>
-        <button class="menu" data-page="receive"><span>📥</span>Recevoir</button>
-        <button class="menu" data-page="messages"><span>💬</span>Messages</button>
-        <button class="menu" data-page="wallet"><span>👛</span>Portefeuille</button>
-      </div>
-    </div>
+<div class="card">
+<h2>Mes services</h2>
+<div class="grid">
+<button class="menu" data-page="send"><span>📤</span>Envoyer</button>
+<button class="menu" data-page="receive"><span>📥</span>Recevoir</button>
+<button class="menu" data-page="messages"><span>💬</span>Messages</button>
+<button class="menu" data-page="wallet"><span>👛</span>Portefeuille</button>
+<button class="menu" data-page="history"><span>📋</span>Historique</button>
+<button class="menu" data-page="security"><span>🔐</span>Sécurité</button>
+</div>
+</div>
 
-    <div class="card">
-      <div class="row">
-        <h3>Dernières opérations</h3>
-        <button class="secondary" data-page="history">Tout voir</button>
-      </div>
-      <div id="recentTransactions"></div>
-    </div>
+<div class="card">
+<div class="row">
+<h3>Dernières opérations</h3>
+<button class="secondary" data-page="history">Tout voir</button>
+</div>
+<div id="recentTransactions"></div>
+</div>
+<button id="logout" class="danger">🚪 Se déconnecter</button>
+<div class="notice">Prototype : aucun véritable transfert d'argent n'est effectué.</div>
+</section>
 
-    <button id="logout" class="danger" style="width:100%">🚪 Se déconnecter</button>
-    <div class="notice">Application de démonstration : aucun véritable transfert d'argent n'est effectué.</div>
-  </section>
+<section id="send" class="page hidden card">
+<button class="secondary back" data-page="home">← Retour</button>
+<h2>📤 Envoyer de l'argent</h2>
+<p>Solde : <strong id="sendBalance"></strong></p>
+<form id="sendForm">
+<label>Nom du destinataire</label>
+<input id="recipient" required>
+<label>Numéro de téléphone</label>
+<input id="recipientPhone" type="tel" required>
+<label>Montant en CDF</label>
+<input id="sendAmount" type="number" min="1" step="1" required>
+<button class="primary">Confirmer l'envoi simulé</button>
+</form>
+</section>
 
-  <section id="send" class="page hidden card">
-    <button class="secondary back" data-page="home">← Retour</button>
-    <h2>📤 Envoyer de l'argent</h2>
-    <p>Solde : <strong id="sendBalance"></strong></p>
-    <form id="sendForm">
-      <label>Nom du destinataire</label>
-      <input id="recipient" placeholder="Ex. Jean" required>
-      <label>Numéro de téléphone</label>
-      <input id="recipientPhone" type="tel" placeholder="Numéro du destinataire" required>
-      <label>Montant (CDF)</label>
-      <input id="sendAmount" type="number" min="1" step="1" placeholder="Ex. 5000" required>
-      <button class="primary">Confirmer l'envoi simulé</button>
-    </form>
-  </section>
+<section id="receive" class="page hidden card">
+<button class="secondary back" data-page="home">← Retour</button>
+<h2>📥 Recevoir de l'argent</h2>
+<form id="receiveForm">
+<label>Nom de l'expéditeur</label>
+<input id="sender" required>
+<label>Montant en CDF</label>
+<input id="receiveAmount" type="number" min="1" step="1" required>
+<button class="primary">Simuler la réception</button>
+</form>
+</section>
 
-  <section id="receive" class="page hidden card">
-    <button class="secondary back" data-page="home">← Retour</button>
-    <h2>📥 Recevoir de l'argent</h2>
-    <p>Cette simulation ajoute le montant à ton solde.</p>
-    <form id="receiveForm">
-      <label>Nom de l'expéditeur</label>
-      <input id="sender" placeholder="Nom de l'expéditeur" required>
-      <label>Montant (CDF)</label>
-      <input id="receiveAmount" type="number" min="1" step="1" placeholder="Ex. 10000" required>
-      <button class="primary">Simuler la réception</button>
-    </form>
-  </section>
+<section id="wallet" class="page hidden card">
+<button class="secondary back" data-page="home">← Retour</button>
+<h2>👛 Mon portefeuille</h2>
+<p class="muted">Solde disponible (fictif)</p>
+<div id="walletBalance" class="amount green">250 000 CDF</div>
+<button class="primary" data-page="history">Voir l'historique</button>
+</section>
 
-  <section id="wallet" class="page hidden card">
-    <button class="secondary back" data-page="home">← Retour</button>
-    <h2>👛 Mon portefeuille</h2>
-    <p class="muted">Solde disponible (fictif)</p>
-    <div id="walletBalance" class="amount green">250 000 CDF</div>
-    <button class="primary" data-page="history">📋 Voir l'historique</button>
-  </section>
+<section id="history" class="page hidden card">
+<button class="secondary back" data-page="home">← Retour</button>
+<h2>📋 Historique des transactions</h2>
+<div id="allTransactions"></div>
+<button id="clearHistory" class="danger" style="margin-top:15px">Effacer l'historique</button>
+</section>
 
-  <section id="history" class="page hidden card">
-    <button class="secondary back" data-page="home">← Retour</button>
-    <h2>📋 Historique des transactions</h2>
-    <p class="muted">Les opérations enregistrées sur cet appareil.</p>
-    <div id="allTransactions"></div>
-    <button id="clearHistory" class="danger" style="width:100%;margin-top:15px">Effacer l'historique</button>
-  </section>
+<section id="messages" class="page hidden card">
+<button class="secondary back" data-page="home">← Retour</button>
+<h2>💬 Mes messages</h2>
+<div id="messageList"></div>
+<form id="messageForm">
+<label>Écrire un message</label>
+<textarea id="messageText" rows="3" required></textarea>
+<button class="primary">Enregistrer le message</button>
+</form>
+<p class="muted">Les messages restent sur cet appareil. Ils ne sont pas transmis à d'autres utilisateurs.</p>
+</section>
 
-  <section id="messages" class="page hidden card">
-    <button class="secondary back" data-page="home">← Retour</button>
-    <h2>💬 Mes messages</h2>
-    <div id="messageList"></div>
-    <form id="messageForm">
-      <label>Écrire un message</label>
-      <textarea id="messageText" rows="3" placeholder="Ton message..." required></textarea>
-      <button class="primary">Ajouter le message</button>
-    </form>
-    <p class="muted">Les messages sont enregistrés localement sur cet appareil. Ils ne sont pas envoyés à d'autres personnes.</p>
-  </section>
+<section id="security" class="page hidden card">
+<button class="secondary back" data-page="home">← Retour</button>
+<h2>🔐 Sécurité et code PIN</h2>
+<p>Modifie ton code PIN à 4 chiffres.</p>
+<form id="pinForm">
+<label>Ancien code PIN</label>
+<input id="oldPin" type="password" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" autocomplete="off" required>
+<label>Nouveau code PIN</label>
+<input id="newPin" type="password" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" autocomplete="off" required>
+<label>Confirmer le nouveau PIN</label>
+<input id="confirmPin" type="password" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" autocomplete="off" required>
+<button class="primary">Enregistrer le nouveau PIN</button>
+</form>
+<div id="securityFeedback" aria-live="polite"></div>
+<div class="notice">Choisis un code difficile à deviner. Évite 0000, 1111 ou ta date de naissance.</div>
+</section>
 
-  <div id="feedback" role="status" aria-live="polite"></div>
+<div id="feedback" aria-live="polite"></div>
 </main>
-
 <footer>Baggira Mobile © 2026 — Prototype de démonstration</footer>
 
 <script>
 (function(){
-  const $ = id => document.getElementById(id);
-  const KEY = "baggira_demo_v2";
-  let data;
+"use strict";
+const $=id=>document.getElementById(id);
+const DATA_KEY="baggira_demo_v2";
+const PIN_KEY="baggira_demo_pin_v1";
 
-  function initialData(){
-    return {
-      balance:250000,
-      transactions:[],
-      messages:[]
-    };
-  }
+function initialData(){
+return {balance:250000,transactions:[],messages:[]};
+}
+function loadData(){
+try{
+const d=JSON.parse(localStorage.getItem(DATA_KEY));
+if(d&&typeof d.balance==="number"&&Array.isArray(d.transactions)&&Array.isArray(d.messages))return d;
+}catch(e){}
+return initialData();
+}
+let data=loadData();
 
-  function loadData(){
-    try{
-      const saved=localStorage.getItem(KEY);
-      if(saved){
-        const d=JSON.parse(saved);
-        if(typeof d.balance==="number" &&
-           Array.isArray(d.transactions) &&
-           Array.isArray(d.messages)) return d;
-      }
-    }catch(e){}
-    return initialData();
-  }
+function getPin(){
+try{
+const p=localStorage.getItem(PIN_KEY);
+return /^\d{4}$/.test(p||"")?p:"1234";
+}catch(e){return "1234";}
+}
+function saveData(){
+try{
+localStorage.setItem(DATA_KEY,JSON.stringify(data));
+return true;
+}catch(e){
+alert("Impossible d'enregistrer les données dans ce navigateur.");
+return false;
+}
+}
+function money(n){
+return Math.round(n).toLocaleString("fr-FR")+" CDF";
+}
+function safe(s){
+return String(s).replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+}
+function notify(s){
+$("feedback").textContent=s;
+$("feedback").className="notice";
+}
+function showPage(page){
+$("login").classList.add("hidden");
+$("home").classList.add("hidden");
+document.querySelectorAll(".page").forEach(e=>e.classList.add("hidden"));
+if(page==="login")$("login").classList.remove("hidden");
+else if(page==="home"){
+$("home").classList.remove("hidden");
+render();
+}else{
+$(page).classList.remove("hidden");
+render();
+}
+$("feedback").textContent="";
+}
+function renderTransactions(list){
+if(!list.length)return '<p class="muted">Aucune opération pour le moment.</p>';
+return list.map(t=>{
+const incoming=t.type==="Réception";
+return '<div class="item"><div class="row"><strong>'+
+safe(t.type)+'</strong><strong class="'+(incoming?"green":"red")+'">'+
+(incoming?"+":"−")+money(t.amount)+'</strong></div><div>'+
+safe(t.person)+'</div><div class="muted">'+safe(t.date)+'</div></div>';
+}).join("");
+}
+function renderMessages(){
+$("messageList").innerHTML=data.messages.length?
+data.messages.map(m=>'<div class="item">'+safe(m.text)+
+'<div class="muted">'+safe(m.date)+'</div></div>').join("") :
+'<p class="muted">Aucun message pour le moment.</p>';
+}
+function render(){
+const b=money(data.balance);
+$("homeBalance").textContent=b;
+$("walletBalance").textContent=b;
+$("sendBalance").textContent=b;
+$("recentTransactions").innerHTML=renderTransactions(data.transactions.slice(0,3));
+$("allTransactions").innerHTML=renderTransactions(data.transactions);
+renderMessages();
+}
 
-  data=loadData();
+$("showPin").addEventListener("click",()=>{
+const p=$("pin");
+p.type=p.type==="password"?"text":"password";
+$("showPin").textContent=p.type==="password"?"Afficher le PIN":"Masquer le PIN";
+});
 
-  function save(){
-    try{
-      localStorage.setItem(KEY,JSON.stringify(data));
-      return true;
-    }catch(e){
-      alert("Attention : le navigateur ne permet pas d'enregistrer les données.");
-      return false;
-    }
-  }
+$("loginForm").addEventListener("submit",e=>{
+e.preventDefault();
+if($("pin").value===getPin()){
+sessionStorage.setItem("baggira_logged_in","yes");
+$("pin").value="";
+showPage("home");
+notify("Connexion réussie !");
+}else{
+alert("PIN incorrect. Vérifie ton code.");
+}
+});
 
-  function money(n){
-    return Math.round(n).toLocaleString("fr-FR")+" CDF";
-  }
+$("logout").addEventListener("click",()=>{
+sessionStorage.removeItem("baggira_logged_in");
+showPage("login");
+});
 
-  function escapeHTML(value){
-    return String(value).replace(/[&<>"']/g,c=>({
-      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-    }[c]));
-  }
+document.querySelectorAll("[data-page]").forEach(b=>{
+b.addEventListener("click",()=>showPage(b.dataset.page));
+});
 
-  function notify(message){
-    $("feedback").textContent=message;
-    $("feedback").className="notice";
-    window.scrollTo({top:0,behavior:"smooth"});
-  }
+function addTransaction(type,person,amount){
+data.transactions.unshift({
+type,person,amount,date:new Date().toLocaleString("fr-FR")
+});
+if(data.transactions.length>200)data.transactions.length=200;
+}
 
-  function showPage(page){
-    $("login").classList.add("hidden");
-    $("home").classList.add("hidden");
-    document.querySelectorAll(".page").forEach(el=>el.classList.add("hidden"));
-    if(page==="login") $("login").classList.remove("hidden");
-    else if(page==="home"){
-      $("home").classList.remove("hidden");
-      render();
-    }else{
-      const section=$(page);
-      if(section) section.classList.remove("hidden");
-      render();
-    }
-    $("feedback").textContent="";
-    $("feedback").className="";
-  }
+$("sendForm").addEventListener("submit",e=>{
+e.preventDefault();
+const person=$("recipient").value.trim();
+const phone=$("recipientPhone").value.trim();
+const amount=Number($("sendAmount").value);
+if(!person||!phone||!Number.isSafeInteger(amount)||amount<=0){
+alert("Vérifie les informations et le montant.");return;
+}
+if(amount>data.balance){alert("Solde insuffisant !");return;}
+if(!confirm("Simuler l'envoi de "+money(amount)+" à "+person+" ?"))return;
+data.balance-=amount;
+addTransaction("Envoi",person+" ("+phone+")",amount);
+if(!saveData())return;
+$("sendForm").reset();
+showPage("home");
+notify("Envoi simulé enregistré.");
+});
 
-  function renderTransactions(list,emptyText){
-    if(!list.length) return '<p class="muted">'+emptyText+'</p>';
-    return list.map(t=>{
-      const incoming=t.type==="Réception";
-      const sign=incoming?"+":"−";
-      return '<div class="item"><div class="row"><strong>'+
-        escapeHTML(t.type)+'</strong><strong class="'+
-        (incoming?"green":"red")+'">'+sign+money(t.amount)+
-        '</strong></div><div>'+escapeHTML(t.person)+'</div>'+
-        '<div class="muted">'+escapeHTML(t.date)+'</div></div>';
-    }).join("");
-  }
+$("receiveForm").addEventListener("submit",e=>{
+e.preventDefault();
+const person=$("sender").value.trim();
+const amount=Number($("receiveAmount").value);
+if(!person||!Number.isSafeInteger(amount)||amount<=0){
+alert("Vérifie le nom et le montant.");return;
+}
+if(!Number.isSafeInteger(data.balance+amount)){alert("Montant trop élevé.");return;}
+if(!confirm("Simuler la réception de "+money(amount)+" de "+person+" ?"))return;
+data.balance+=amount;
+addTransaction("Réception",person,amount);
+if(!saveData())return;
+$("receiveForm").reset();
+showPage("home");
+notify("Réception simulée enregistrée.");
+});
 
-  function renderMessages(){
-    $("messageList").innerHTML=data.messages.length
-      ?data.messages.map(m=>'<div class="item"><div>'+
-        escapeHTML(m.text)+'</div><div class="muted">'+
-        escapeHTML(m.date)+'</div></div>').join("")
-      :'<p class="muted">Aucun message pour le moment.</p>';
-  }
+$("messageForm").addEventListener("submit",e=>{
+e.preventDefault();
+const message=$("messageText").value.trim();
+if(!message)return;
+data.messages.unshift({text:message,date:new Date().toLocaleString("fr-FR")});
+if(data.messages.length>200)data.messages.length=200;
+if(!saveData())return;
+$("messageForm").reset();
+renderMessages();
+notify("Message enregistré sur cet appareil.");
+});
 
-  function render(){
-    const b=money(data.balance);
-    $("homeBalance").textContent=b;
-    $("walletBalance").textContent=b;
-    $("sendBalance").textContent=b;
-    $("recentTransactions").innerHTML=renderTransactions(
-      data.transactions.slice(0,3),"Aucune opération pour le moment."
-    );
-    $("allTransactions").innerHTML=renderTransactions(
-      data.transactions,"Ton historique est vide."
-    );
-    renderMessages();
-  }
+$("clearHistory").addEventListener("click",()=>{
+if(!confirm("Effacer tout l'historique ? Le solde restera inchangé."))return;
+const previous=data.transactions;
+data.transactions=[];
+if(!saveData()){data.transactions=previous;return;}
+render();
+notify("Historique effacé.");
+});
 
-  $("showPin").addEventListener("click",()=>{
-    const field=$("pin");
-    field.type=field.type==="password"?"text":"password";
-    $("showPin").textContent=field.type==="password"
-      ?"Afficher le PIN":"Masquer le PIN";
-  });
+$("pinForm").addEventListener("submit",e=>{
+e.preventDefault();
+const old=$("oldPin").value;
+const next=$("newPin").value;
+const confirmPin=$("confirmPin").value;
 
-  $("loginForm").addEventListener("submit",e=>{
-    e.preventDefault();
-    if($("pin").value==="1234"){
-      sessionStorage.setItem("baggira_logged_in","yes");
-      $("pin").value="";
-      showPage("home");
-      notify("Connexion réussie !");
-    }else{
-      alert("PIN incorrect. Pour cette démonstration, utilise 1234.");
-    }
-  });
+if(old!==getPin()){
+alert("L'ancien PIN est incorrect.");return;
+}
+if(!/^\d{4}$/.test(next)){
+alert("Le nouveau PIN doit contenir exactement 4 chiffres.");return;
+}
+if(next!==confirmPin){
+alert("Les deux nouveaux PIN ne correspondent pas.");return;
+}
+if(next===old){
+alert("Choisis un PIN différent de l'ancien.");return;
+}
+try{
+localStorage.setItem(PIN_KEY,next);
+if(localStorage.getItem(PIN_KEY)!==next)throw new Error("save failed");
+}catch(err){
+alert("Le navigateur n'a pas pu enregistrer le PIN. Aucun changement confirmé.");
+return;
+}
+$("pinForm").reset();
+$("securityFeedback").textContent="PIN modifié avec succès. Utilise ce nouveau code à ta prochaine connexion.";
+$("securityFeedback").className="notice";
+sessionStorage.removeItem("baggira_logged_in");
+showPage("login");
+alert("PIN modifié ! Reconnecte-toi avec ton nouveau PIN.");
+});
 
-  $("logout").addEventListener("click",()=>{
-    sessionStorage.removeItem("baggira_logged_in");
-    showPage("login");
-    notify("Tu es déconnecté.");
-  });
-
-  document.querySelectorAll("[data-page]").forEach(button=>{
-    button.addEventListener("click",()=>{
-      showPage(button.dataset.page);
-    });
-  });
-
-  function addTransaction(type,person,amount){
-    data.transactions.unshift({
-      type:type,
-      person:person,
-      amount:amount,
-      date:new Date().toLocaleString("fr-FR")
-    });
-    if(data.transactions.length>200) data.transactions.length=200;
-  }
-
-  $("sendForm").addEventListener("submit",e=>{
-    e.preventDefault();
-    const person=$("recipient").value.trim();
-    const phone=$("recipientPhone").value.trim();
-    const amount=Number($("sendAmount").value);
-
-    if(!person||!phone||!Number.isSafeInteger(amount)||amount<=0){
-      alert("Vérifie le destinataire et le montant.");
-      return;
-    }
-    if(amount>data.balance){
-      alert("Solde insuffisant !");
-      return;
-    }
-    if(!confirm("Simuler l'envoi de "+money(amount)+" à "+person+" ?")) return;
-
-    data.balance-=amount;
-    addTransaction("Envoi",person+" ("+phone+")",amount);
-    save();
-    $("sendForm").reset();
-    showPage("home");
-    notify("Envoi simulé enregistré dans l'historique.");
-  });
-
-  $("receiveForm").addEventListener("submit",e=>{
-    e.preventDefault();
-    const person=$("sender").value.trim();
-    const amount=Number($("receiveAmount").value);
-
-    if(!person||!Number.isSafeInteger(amount)||amount<=0){
-      alert("Vérifie le nom et le montant.");
-      return;
-    }
-    if(!Number.isSafeInteger(data.balance+amount)){
-      alert("Montant trop élevé.");
-      return;
-    }
-    if(!confirm("Simuler la réception de "+money(amount)+" de "+person+" ?")) return;
-
-    data.balance+=amount;
-    addTransaction("Réception",person,amount);
-    save();
-    $("receiveForm").reset();
-    showPage("home");
-    notify("Réception simulée enregistrée dans l'historique.");
-  });
-
-  $("messageForm").addEventListener("submit",e=>{
-    e.preventDefault();
-    const text=$("messageText").value.trim();
-    if(!text) return;
-    data.messages.unshift({
-      text:text,
-      date:new Date().toLocaleString("fr-FR")
-    });
-    if(data.messages.length>200) data.messages.length=200;
-    save();
-    $("messageForm").reset();
-    renderMessages();
-    notify("Message enregistré sur cet appareil.");
-  });
-
-  $("clearHistory").addEventListener("click",()=>{
-    if(!confirm("Effacer toutes les transactions de l'historique ?")) return;
-    data.transactions=[];
-    save();
-    render();
-    notify("Historique effacé. Le solde reste inchangé.");
-  });
-
-  if(sessionStorage.getItem("baggira_logged_in")==="yes"){
-    showPage("home");
-  }else{
-    showPage("login");
-  }
+if(sessionStorage.getItem("baggira_logged_in")==="yes"){
+showPage("home");
+}else{
+showPage("login");
+}
 })();
 </script>
 </body>
-        </html>
-        
+  </html>
+  
