@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baggira Mobile</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      color: #172554;
+    }
+    header {
+      background: #075e54;
+      color: white;
+      padding: 25px 18px;
+      text-align: center;
+    }
+    header h1 { margin: 0 0 8px; }
+    header p { margin: 0; }
+    main { padding: 18px; max-width: 500px; margin: auto; }
+    .balance {
+      background: white;
+      padding: 22px;
+      border-radius: 16px;
+      box-shadow: 0 3px 12px #0001;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .amount { font-size: 28px; font-weight: bold; margin: 12px; }
+    .buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    button {
+      border: 0;
+      border-radius: 12px;
+      padding: 18px 8px;
+      background: #087f6e;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:active { opacity: .8; }
+    .panel {
+      margin-top: 18px;
+      background: white;
+      padding: 18px;
+      border-radius: 14px;
+      display: none;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccd5df;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .action { width: 100%; margin-top: 10px; }
+    #message { color: #075e54; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Baggira Mobile</h1>
+    <p>Messagerie et services monétaires</p>
+  </header>
+
+  <main>
+    <section class="balance">
+      <div>Mon portefeuille de démonstration</div>
+      <div class="amount"><span id="balance">250000</span> CDF</div>
+      <small>Solde fictif pour les essais</small>
+    </section>
+
+    <div class="buttons">
+      <button onclick="showPanel('send')">Envoyer</button>
+      <button onclick="showPanel('receive')">Recevoir</button>
+      <button onclick="showPanel('messages')">Messages</button>
+      <button onclick="showPanel('wallet')">Portefeuille</button>
+    </div>
+
+    <section id="send" class="panel">
+      <h2>Envoyer de l'argent</h2>
+      <input id="recipient" placeholder="Nom du destinataire">
+      <input id="sendAmount" type="number" min="1" placeholder="Montant en CDF">
+      <button class="action" onclick="sendMoney()">Confirmer l'envoi</button>
+    </section>
+
+    <section id="receive" class="panel">
+      <h2>Recevoir de l'argent</h2>
+      <p>Pour cette démonstration, aucun transfert réel n'est effectué.</p>
+      <input id="receiveAmount" type="number" min="1" placeholder="Montant à simuler">
+      <button class="action" onclick="receiveMoney()">Simuler la réception</button>
+    </section>
+
+    <section id="messages" class="panel">
+      <h2>Messagerie</h2>
+      <input id="contact" placeholder="Nom du contact">
+      <input id="textMessage" placeholder="Écrire un message">
+      <button class="action" onclick="sendMessage()">Envoyer le message</button>
+      <div id="messageHistory"></div>
+    </section>
+
+    <section id="wallet" class="panel">
+      <h2>Mon portefeuille</h2>
+      <p>Solde de démonstration : <strong><span id="walletBalance">250000</span> CDF</strong></p>
+      <h3>Historique des opérations</h3>
+      <ul id="history"><li>Aucune opération pour le moment.</li></ul>
+    </section>
+
+    <p id="message"></p>
+  </main>
+
+  <script>
+    let balance = 250000;
+    const transactions = [];
+
+    function updateBalance() {
+      document.getElementById('balance').textContent = balance.toLocaleString('fr-FR');
+      document.getElementById('walletBalance').textContent = balance.toLocaleString('fr-FR');
+    }
+
+    function showPanel(id) {
+      document.querySelectorAll('.panel').forEach(p => p.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+      document.getElementById('message').textContent = '';
+    }
+
+    function record(text) {
+      transactions.unshift(text);
+      const list = document.getElementById('history');
+      list.innerHTML = '';
+      transactions.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
+      });
+    }
+
+    function sendMoney() {
+      const recipient = document.getElementById('recipient').value.trim();
+      const amount = Number(document.getElementById('sendAmount').value);
+      if (!recipient || !Number.isFinite(amount) || amount <= 0 || !Number.isInteger(amount)) {
+        alert('Entre un nom et un montant entier valide.');
+        return;
+      }
+      if (amount > balance) {
+        alert('Solde insuffisant.');
+        return;
+      }
+      balance -= amount;
+      updateBalance();
+      record('Envoi simulé de ' + amount.toLocaleString('fr-FR') + ' CDF à ' + recipient);
+      document.getElementById('message').textContent = 'Envoi de démonstration effectué.';
+      document.getElementById('sendAmount').value = '';
+      document.getElementById('recipient').value = '';
+    }
+
+    function receiveMoney() {
+      const amount = Number(document.getElementById('receiveAmount').value);
+      if (!Number.isFinite(amount) || amount <= 0 || !Number.isInteger(amount)) {
+        alert('Entre un montant entier valide.');
+        return;
+      }
+      balance += amount;
+      updateBalance();
+      record('Réception simulée de ' + amount.toLocaleString('fr-FR') + ' CDF');
+      document.getElementById('message').textContent = 'Réception de démonstration effectuée.';
+      document.getElementById('receiveAmount').value = '';
+    }
+
+    function sendMessage() {
+      const contact = document.getElementById('contact').value.trim();
+      const msg = document.getElementById('textMessage').value.trim();
+      if (!contact || !msg) {
+        alert('Entre le nom du contact et ton message.');
+        return;
+      }
+      const line = document.createElement('p');
+      line.textContent = contact + ' : ' + msg;
+      document.getElementById('messageHistory').prepend(line);
+      document.getElementById('textMessage').value = '';
+      document.getElementById('message').textContent = 'Message affiché sur cet appareil.';
+    }
+
+    updateBalance();
+  </script>
+</body>
+        </html>
+        
